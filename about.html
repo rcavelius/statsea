@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Sea and Stone</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --cream: #f0e6d3;
+    --cream-80: rgba(240,230,211,0.8);
+    --cream-60: rgba(240,230,211,0.6);
+    --cream-40: rgba(240,230,211,0.4);
+    --cream-20: rgba(240,230,211,0.2);
+    --cream-10: rgba(240,230,211,0.1);
+    --gold: #c9a96e;
+    --gold-bg: rgba(201,169,110,0.2);
+    --gold-border: rgba(201,169,110,0.4);
+    --dark: #1a1f2e;
+    --dark-card: #1e2536;
+    --dark-surface: #242b3d;
+    --dark-soft: #2a3248;
+    --navy: #151b2b;
+    --text-light: #f0e6d3;
+    --text-muted: rgba(240,230,211,0.55);
+    --text-dim: rgba(240,230,211,0.35);
+    --border: rgba(240,230,211,0.1);
+    --border-light: rgba(240,230,211,0.15);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--dark); color: var(--text-light); overflow-x: hidden; }
+  img { display: block; }
+  ::selection { background: var(--gold); color: var(--dark); }
+
+  /* Scroll reveal */
+  .rv { opacity: 0; transform: translateY(36px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+  .rv.vis { opacity: 1; transform: translateY(0); }
+  .rv-d1 { transition-delay: 0.12s; }
+  .rv-d2 { transition-delay: 0.24s; }
+  .rv-d3 { transition-delay: 0.36s; }
+
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 36px; }
+  
+  
+  
+
+  /* ═══ HEADER ═══ */
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s;
+  }
+  .site-header.scrolled {
+    background: rgba(21,27,43,0.88);
+    backdrop-filter: blur(20px) saturate(1.4);
+    border-bottom-color: var(--border);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; transition: opacity 0.3s; }
+  .logo:hover { opacity: 0.8; }
+  .logo-shell { font-size: 26px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3)); }
+  .logo-text { font-family: var(--serif); font-size: 22px; font-weight: 400; letter-spacing: 0.01em; color: var(--cream); }
+  .nav-links { display: flex; gap: 6px; }
+  .nav-link {
+    background: none; border: none; cursor: pointer;
+    font-family: var(--sans); font-size: 14px; font-weight: 400;
+    color: var(--cream-60); padding: 8px 18px; border-radius: 100px;
+    transition: all 0.3s; letter-spacing: 0.02em;
+  }
+  .nav-link:hover { color: var(--cream); }
+  .nav-link.active { color: var(--dark); background: var(--cream-80); font-weight: 500; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    position: relative; min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; text-align: center; overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img {
+    width: 100%; height: 100%; object-fit: cover;
+    animation: slowZoom 25s ease-in-out infinite alternate;
+  }
+  @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(21,27,43,0.55) 0%,
+      rgba(21,27,43,0.25) 35%,
+      rgba(21,27,43,0.2) 55%,
+      rgba(21,27,43,0.5) 80%,
+      rgba(21,27,43,0.85) 100%
+    );
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 720px; padding: 40px 20px; }
+  .hero-badge {
+    display: inline-block; font-family: var(--sans); font-size: 13px;
+    font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dark); background: var(--cream-80);
+    padding: 8px 24px; border-radius: 100px; margin-bottom: 36px;
+  }
+  .hero-tagline {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(24px, 3.2vw, 34px); color: var(--cream);
+    margin-bottom: 8px; line-height: 1.4;
+  }
+  .hero-brand {
+    font-family: var(--serif); font-style: italic; font-weight: 600;
+    font-size: clamp(56px, 8vw, 96px); color: var(--cream);
+    line-height: 1.05; margin-bottom: 28px;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+  }
+  .hero-desc {
+    font-size: 17px; font-weight: 300; color: var(--cream-80);
+    line-height: 1.7; max-width: 520px; margin: 0 auto 40px;
+  }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ═══ BUTTONS ═══ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 36px; border-radius: 100px; font-size: 15px;
+    font-weight: 500; cursor: pointer; font-family: var(--sans);
+    transition: all 0.35s var(--ease); border: none;
+  }
+  .btn svg { transition: transform 0.3s var(--ease); }
+  .btn:hover svg { transform: translateX(3px); }
+  .btn-gold { background: var(--cream-80); color: var(--dark); }
+  .btn-gold:hover { background: var(--cream); box-shadow: 0 4px 30px rgba(240,230,211,0.25); }
+  .btn-outline { background: transparent; color: var(--cream); border: 1.5px solid var(--cream-40); }
+  .btn-outline:hover { border-color: var(--cream-80); background: rgba(240,230,211,0.06); }
+  .btn-cream { background: var(--cream); color: var(--dark); }
+  .btn-cream:hover { box-shadow: 0 4px 30px rgba(240,230,211,0.2); transform: translateY(-2px); }
+
+  /* ═══ SECTIONS ═══ */
+  .section { padding: 110px 0; }
+  .section-bordered { border-top: 1px solid var(--border); }
+  .section-header { margin-bottom: 64px; }
+  .section-header.center { text-align: center; }
+  .section-header.center h2, .section-header.center p { margin-left: auto; margin-right: auto; }
+  .overline {
+    font-size: 12px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.15em; color: var(--gold); margin-bottom: 14px;
+  }
+  .section-header h2 {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: clamp(30px, 4vw, 46px); line-height: 1.2;
+    max-width: 580px;
+  }
+  .section-header p {
+    font-size: 16px; color: var(--text-muted); font-weight: 300;
+    margin-top: 14px; max-width: 460px; line-height: 1.7;
+  }
+
+  /* ═══ BENEFIT CARDS ═══ */
+  .cards-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .benefit-card {
+    background: var(--dark-card); padding: 44px 32px;
+    position: relative; overflow: hidden; transition: background 0.4s;
+  }
+  .benefit-card:hover { background: var(--dark-surface); }
+  .benefit-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .benefit-card:hover::before { opacity: 1; }
+  .card-num {
+    font-family: var(--serif); font-size: 56px; font-weight: 300;
+    color: var(--cream-10); position: absolute; top: 16px; right: 20px;
+  }
+  .card-icon {
+    width: 46px; height: 46px; border-radius: 13px;
+    background: var(--gold-bg); border: 1px solid var(--gold-border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); margin-bottom: 24px;
+  }
+  .benefit-card h3 {
+    font-family: var(--serif); font-style: italic; font-size: 23px;
+    font-weight: 500; margin-bottom: 12px;
+  }
+  .benefit-card p { font-size: 14px; color: var(--text-muted); font-weight: 300; line-height: 1.75; }
+
+  /* ═══ STEPS ═══ */
+  .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 48px; }
+  .step-num {
+    font-family: var(--serif); font-size: 88px; font-weight: 300;
+    color: var(--cream-10); line-height: 1; margin-bottom: -16px;
+  }
+  .step-item h3 { font-family: var(--serif); font-style: italic; font-size: 21px; font-weight: 500; margin-bottom: 10px; }
+  .step-item p { font-size: 14px; color: var(--text-muted); font-weight: 300; line-height: 1.75; }
+
+  /* ═══ FAQ ═══ */
+  .faq-list { max-width: 740px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 26px 0; cursor: pointer; }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--serif); font-style: italic; font-size: 20px; font-weight: 500;
+  }
+  .faq-q .plus {
+    font-family: var(--sans); font-size: 18px; font-weight: 300;
+    color: var(--gold); width: 30px; height: 30px; display: flex;
+    align-items: center; justify-content: center; border-radius: 50%;
+    border: 1px solid var(--border); transition: all 0.3s;
+  }
+  .faq-item:hover .plus { border-color: var(--gold-border); }
+  .faq-item.open .plus { transform: rotate(45deg); background: var(--gold-bg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.4s; }
+  .faq-item.open .faq-a { max-height: 180px; padding-top: 14px; }
+  .faq-a p { font-size: 15px; color: var(--text-muted); font-weight: 300; line-height: 1.75; }
+
+  /* ═══ CTA ═══ */
+  .cta-section {
+    position: relative; padding: 110px 0; text-align: center; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 65%);
+  }
+  .cta-section h2 {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: clamp(34px, 5vw, 52px); margin-bottom: 14px; position: relative;
+  }
+  .cta-section p {
+    font-size: 17px; color: var(--text-muted); font-weight: 300;
+    max-width: 440px; margin: 0 auto 32px; position: relative; line-height: 1.7;
+  }
+  .cta-section .btn { position: relative; }
+
+  /* ═══ SERVICES ZIGZAG ═══ */
+  .page-hero { padding: 150px 0 80px; }
+  .page-hero .overline { color: var(--gold); margin-bottom: 18px; }
+  .page-hero h1 {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: clamp(34px, 5vw, 52px); line-height: 1.15; max-width: 660px;
+  }
+  .page-hero p { font-size: 17px; color: var(--text-muted); font-weight: 300; margin-top: 18px; max-width: 500px; line-height: 1.7; }
+
+  .zigzag { display: flex; flex-direction: column; gap: 100px; }
+  .zigzag-item { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .zigzag-item .img-wrap { border-radius: 16px; overflow: hidden; position: relative; }
+  .zigzag-item .img-wrap img { width: 100%; height: 400px; object-fit: cover; transition: transform 0.7s var(--ease); }
+  .zigzag-item .img-wrap:hover img { transform: scale(1.04); }
+  .zigzag-item .img-wrap::after {
+    content: ''; position: absolute; inset: 0; border-radius: 16px;
+    border: 1px solid var(--cream-10); pointer-events: none;
+  }
+  .zt .icon-box {
+    width: 42px; height: 42px; border-radius: 11px;
+    background: var(--gold-bg); border: 1px solid var(--gold-border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); margin-bottom: 18px;
+  }
+  .zt h2 { font-family: var(--serif); font-style: italic; font-size: 30px; font-weight: 500; margin-bottom: 14px; }
+  .zt p { font-size: 15px; color: var(--text-muted); font-weight: 300; line-height: 1.8; }
+
+  /* ═══ ABOUT ═══ */
+  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .story-text h2 { font-family: var(--serif); font-style: italic; font-size: 38px; font-weight: 500; margin-bottom: 22px; }
+  .story-text p { font-size: 15px; color: var(--text-muted); font-weight: 300; line-height: 1.8; margin-bottom: 14px; }
+  .story-img { border-radius: 16px; overflow: hidden; position: relative; }
+  .story-img img { width: 100%; height: 480px; object-fit: cover; }
+  .story-img::after { content: ''; position: absolute; inset: 0; border: 1px solid var(--cream-10); border-radius: 16px; }
+
+  .test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .test-card {
+    background: var(--dark-card); padding: 36px 28px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: background 0.4s;
+  }
+  .test-card:hover { background: var(--dark-surface); }
+  .test-card .stars { color: var(--gold); font-size: 15px; margin-bottom: 18px; letter-spacing: 3px; }
+  .test-card .quote {
+    font-family: var(--serif); font-style: italic; font-size: 17px;
+    font-weight: 400; line-height: 1.65; color: var(--cream-60);
+    margin-bottom: 24px; flex: 1;
+  }
+  .test-card .author { font-size: 14px; font-weight: 500; }
+  .test-card .author-loc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+  /* ═══ CONTACT ═══ */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .form-card {
+    background: var(--dark-card); border-radius: 20px; padding: 44px;
+    border: 1px solid var(--border);
+  }
+  .form-card h2 { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; margin-bottom: 4px; }
+  .form-card .sub { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; font-weight: 300; }
+  .fg { margin-bottom: 18px; }
+  .fg label {
+    font-size: 11px; font-weight: 500; display: block; margin-bottom: 7px;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted);
+  }
+  .fg input, .fg textarea {
+    width: 100%; padding: 13px 16px; border-radius: 12px;
+    border: 1px solid var(--border); background: var(--dark-surface);
+    color: var(--cream); font-size: 15px; font-family: var(--sans);
+    outline: none; transition: border-color 0.3s;
+  }
+  .fg input:focus, .fg textarea:focus { border-color: var(--gold); }
+  .fg input::placeholder, .fg textarea::placeholder { color: var(--text-dim); }
+  .fg textarea { resize: none; }
+  .form-submit {
+    width: 100%; padding: 15px; border-radius: 100px;
+    background: var(--cream-80); color: var(--dark); border: none;
+    font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--sans);
+    letter-spacing: 0.04em; transition: all 0.3s; margin-top: 6px;
+  }
+  .form-submit:hover { background: var(--cream); box-shadow: 0 4px 24px rgba(240,230,211,0.2); }
+  .ci h2 { font-family: var(--serif); font-style: italic; font-size: 28px; font-weight: 500; margin-bottom: 32px; }
+  .cr { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px; }
+  .cr-icon {
+    width: 46px; height: 46px; border-radius: 13px;
+    background: var(--gold-bg); border: 1px solid var(--gold-border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); flex-shrink: 0;
+  }
+  .cr .ct { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+  .cr .cv { font-size: 14px; color: var(--text-muted); font-weight: 300; }
+  .sa-box {
+    background: var(--dark-card); border-radius: 16px; padding: 22px;
+    margin-top: 32px; border: 1px solid var(--border);
+  }
+  .sa-box h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .sa-box p { font-size: 13px; color: var(--text-muted); font-weight: 300; line-height: 1.65; }
+
+  /* ═══ FOOTER ═══ */
+  .site-footer { border-top: 1px solid var(--border); padding: 56px 0 36px; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 56px; }
+  .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin: 14px 0; max-width: 280px; font-weight: 300; }
+  .footer-brand .bonded { font-size: 11px; font-weight: 500; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; }
+  .fc h4 { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 18px; }
+  .fl { display: block; font-size: 14px; color: var(--cream-60); padding: 4px 0; cursor: pointer; background: none; border: none; font-family: var(--sans); text-align: left; transition: color 0.3s; font-weight: 300; }
+  .fl:hover { color: var(--gold); }
+  .footer-bottom { border-top: 1px solid var(--border); margin-top: 44px; padding-top: 24px; display: flex; justify-content: space-between; font-size: 12px; color: var(--text-dim); font-weight: 300; }
+
+  @media (max-width: 900px) {
+    .cards-3, .steps-grid, .test-grid, .story-grid, .contact-grid, .footer-grid, .zigzag-item { grid-template-columns: 1fr; }
+    .section { padding: 80px 0; }
+    .hero-content { padding: 20px; }
+    .nav-links { gap: 2px; }
+    .nav-link { padding: 6px 10px; font-size: 12px; }
+    .zigzag-item .img-wrap img { height: 260px; }
+  }
+
+  a { color: inherit; text-decoration: none; }
+  .nav-link { text-decoration: none; }
+</style>
+</head>
+<body>
+<header class="site-header" id="hdr">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-shell">🐚</span>
+      <span class="logo-text">Sea and Stone</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <section class="page-hero"><div class="container"><p class="overline">About Us</p><h1>Trusted care for your most valuable asset</h1><p>Founded by experienced property managers who understand the importance of reliable home care.</p></div></section>
+  <section class="section"><div class="container story-grid"><div class="story-text rv"><h2>Our story</h2><p>Sea and Stone was founded in 2018 by a team of experienced property managers who saw a need for professional, reliable house sitting services in South Florida.</p><p>After years of managing vacation rentals and luxury properties, we recognized that homeowners needed more than just basic check-ins. They needed a partner who would treat their home with the same care they would themselves.</p><p>Today, we serve homeowners throughout Boca Raton and the surrounding areas, providing comprehensive property care that gives our clients complete peace of mind.</p></div><div class="story-img rv rv-d1"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80" alt="Coastal home"></div></div></section>
+  <section class="section section-bordered"><div class="container"><div class="section-header center rv"><p class="overline">Testimonials</p><h2>What our clients say</h2></div>
+    <div class="test-grid">
+      <div class="test-card rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">"We traveled for 6 weeks and came home to a perfectly maintained house. The daily photo updates gave us complete peace of mind."</p><p class="author">Maya C.</p><p class="author-loc">Boca Raton</p></div>
+      <div class="test-card rv rv-d1"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">"After a pipe leak, they coordinated the plumber and prevented major damage. Worth every penny."</p><p class="author">Raj P.</p><p class="author-loc">Delray Beach</p></div>
+      <div class="test-card rv rv-d2"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">"Professional, reliable, and trustworthy. Our home was in better condition when we returned than when we left."</p><p class="author">Lucia T.</p><p class="author-loc">Highland Beach</p></div>
+    </div>
+  </div></section>
+  <section class="cta-section"><div class="container rv"><h2>Want to learn more?</h2><p>Reach out for a free, no-obligation consultation.</p><a href="contact.html"><button class="btn btn-gold">Get in Touch <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></a></div></section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo"><span class="logo-shell">🐚</span><span class="logo-text">Sea and Stone</span></a>
+      <p>Professional house sitting services in Boca Raton. Trusted care for your home while you're away.</p>
+      <p class="bonded">Bonded & Insured</p>
+    </div>
+    <div class="fc"><h4>Navigation</h4><a class="fl" href="index.html">Home</a><a class="fl" href="about.html">About</a><a class="fl" href="services.html">Services</a><a class="fl" href="contact.html">Contact</a></div>
+    <div class="fc"><h4>Contact</h4><p style="font-size:14px;color:var(--text-muted);margin-bottom:6px;font-weight:300">Boca Raton, Florida</p><p style="font-size:14px;color:var(--text-muted);margin-bottom:6px;font-weight:300">(561) 555-1234</p><p style="font-size:14px;color:var(--text-muted);font-weight:300">info@seaandstone.com</p></div>
+  </div>
+  <div class="container footer-bottom"><span>&copy; 2026 Sea and Stone. All rights reserved.</span><span>Serving South Florida since 2018</span></div>
+</footer>
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>50);
+});
+const o=new IntersectionObserver(e=>{
+  e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('vis')});
+},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(el=>o.observe(el));
+</script>
+</body>
+</html>
